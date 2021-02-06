@@ -8,6 +8,7 @@ gem 'webpacker',  '4.2.2'  #Angular Vue support
 gem 'turbolinks', '5.2.1'  #Realtime apps
 gem 'jbuilder',   '2.10.0' #Gerneriše JSON
 gem 'bootsnap',   '1.4.6', require: false
+gem 'bootstrap-sass', '3.4.1'
 
 group :production do
   gem 'pg', '1.2.3'
