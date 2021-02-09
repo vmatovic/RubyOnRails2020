@@ -1,0 +1,2 @@
+class CalMonthSale < ApplicationRecord
+end

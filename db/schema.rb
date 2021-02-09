@@ -10,7 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_09_123609) do
+ActiveRecord::Schema.define(version: 2021_02_09_203957) do
+
+  create_table "cal_month_sales", force: :cascade do |t|
+    t.date "calendar_month_desc"
+    t.integer "dollars"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "cal_times", force: :cascade do |t|
+    t.date "datefull"
+    t.integer "day_number_in_week"
+    t.integer "day_number_in_month"
+    t.integer "calendar_week_number"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "channels", force: :cascade do |t|
+    t.string "desc"
+    t.string "classs"
+    t.string "total"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "countries", force: :cascade do |t|
+    t.string "name"
+    t.string "region"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "microposts", force: :cascade do |t|
     t.text "content"

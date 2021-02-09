@@ -36,6 +36,9 @@ class User < ApplicationRecord
       
       # Returns true if the given token matches the digest.
       def authenticated?(remember_token)
-        BCrypt::Password.new(remember_digest).is_password?(remember_token)
+        #tk = BCrypt::Password.new("$2a$10$3.D6D2htbiRrezmZUhePV.gaQlc3ZjFYD9hv43khN5eWP5y8BGUXG")
+        #puts tk
+        tk = BCrypt::Password.new(remember_digest)
+        tk.is_password?(remember_token)
       end
 end

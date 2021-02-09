@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Datefull:</strong>
+  <%= @cal_time.datefull %>
+</p>
+
+<p>
+  <strong>Day number in week:</strong>
+  <%= @cal_time.day_number_in_week %>
+</p>
+
+<p>
+  <strong>Day number in month:</strong>
+  <%= @cal_time.day_number_in_month %>
+</p>
+
+<p>
+  <strong>Calendar week number:</strong>
+  <%= @cal_time.calendar_week_number %>
+</p>
+
+<%= link_to 'Edit', edit_cal_time_path(@cal_time) %> |
+<%= link_to 'Back', cal_times_path %>

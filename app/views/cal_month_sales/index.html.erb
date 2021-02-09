@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Cal Month Sales</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Calendar month desc</th>
+      <th>Dollars</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cal_month_sales.each do |cal_month_sale| %>
+      <tr>
+        <td><%= cal_month_sale.calendar_month_desc %></td>
+        <td><%= cal_month_sale.dollars %></td>
+        <td><%= link_to 'Show', cal_month_sale %></td>
+        <td><%= link_to 'Edit', edit_cal_month_sale_path(cal_month_sale) %></td>
+        <td><%= link_to 'Destroy', cal_month_sale, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Cal Month Sale', new_cal_month_sale_path %>

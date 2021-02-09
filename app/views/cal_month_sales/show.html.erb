@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Calendar month desc:</strong>
+  <%= @cal_month_sale.calendar_month_desc %>
+</p>
+
+<p>
+  <strong>Dollars:</strong>
+  <%= @cal_month_sale.dollars %>
+</p>
+
+<%= link_to 'Edit', edit_cal_month_sale_path(@cal_month_sale) %> |
+<%= link_to 'Back', cal_month_sales_path %>

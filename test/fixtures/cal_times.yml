@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  datefull: 2021-02-09
+  day_number_in_week: 1
+  day_number_in_month: 1
+  calendar_week_number: 1
+
+two:
+  datefull: 2021-02-09
+  day_number_in_week: 1
+  day_number_in_month: 1
+  calendar_week_number: 1

@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :channels
+  resources :cal_times
+  resources :countries
+  resources :cal_month_sales
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'

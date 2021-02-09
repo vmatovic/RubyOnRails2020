@@ -1,0 +1,2 @@
+class CalTime < ApplicationRecord
+end

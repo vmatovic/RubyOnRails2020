@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  calendar_month_desc: 2021-02-09
+  dollars: 1
+
+two:
+  calendar_month_desc: 2021-02-09
+  dollars: 1
