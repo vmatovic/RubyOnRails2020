@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_10_113624) do
+ActiveRecord::Schema.define(version: 2021_02_10_130548) do
 
   create_table "cal_month_sales", force: :cascade do |t|
     t.date "calendar_month_desc"
@@ -58,10 +58,10 @@ ActiveRecord::Schema.define(version: 2021_02_10_113624) do
   end
 
   create_table "products", force: :cascade do |t|
-    t.string "model_name"
+    t.string "device_name"
     t.string "manufacturer"
-    t.string "platform"
-    t.float "min_price"
+    t.string "device_platform"
+    t.integer "min_price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -77,6 +77,15 @@ ActiveRecord::Schema.define(version: 2021_02_10_113624) do
 
   create_table "sales", force: :cascade do |t|
     t.integer "amount_sold"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "supp_demographics", force: :cascade do |t|
+    t.string "education"
+    t.integer "household_size"
+    t.integer "years_residence"
+    t.string "comment"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

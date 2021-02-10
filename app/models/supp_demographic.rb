@@ -1,0 +1,2 @@
+class SuppDemographic < ApplicationRecord
+end

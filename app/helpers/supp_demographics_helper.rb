@@ -1,0 +1,2 @@
+module SuppDemographicsHelper
+end

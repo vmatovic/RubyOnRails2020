@@ -119,15 +119,15 @@ end
 end
 
 70.times do |i|
-    model_name = Faker::Device.model_name
-    manufacturer = Faker::Device.manufacturer
-    platform = Faker::Device.platform
-    min_price = Faker::Number.decimal(l_digits: 3, r_digits: 2)
+    device_name = Faker::Device.model_name
+    mmanufacturer = Faker::Device.manufacturer
+    device_platform = Faker::Device.platform
+    mmin_price = Faker::Number.decimal(l_digits: 3, r_digits: 2)
     
-    Product.create!(model_name: model_name,
-                    manufacturer: manufacturer,
-                    platform: platform,
-                    min_price: min_price)
+    Product.create!(device_name: device_name,
+                    manufacturer: mmanufacturer,
+                    device_platform: device_platform,
+                    min_price: mmin_price)
 end
 
 100.times do |i|
@@ -144,4 +144,19 @@ end
 
 200.times do |i|
     sales = Faker::Number.within(range: 1000..2000)
+    
+    Sale.create!(amount_sold: sales)
 end
+
+110.times do |i|
+    education = Faker::University.name
+    household_size = Faker::Number.within(range: 1..4)
+    years_residence = Faker::Number.within(range: 1..6)
+    comment = Faker::Movie.quote
+    
+    SuppDemographic.create!(education: education,
+                            household_size: household_size,
+                            years_residence: years_residence,
+                            comment: comment)
+end
+
