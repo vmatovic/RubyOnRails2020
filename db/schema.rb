@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_09_203957) do
+ActiveRecord::Schema.define(version: 2021_02_10_113624) do
 
   create_table "cal_month_sales", force: :cascade do |t|
     t.date "calendar_month_desc"
@@ -36,6 +36,13 @@ ActiveRecord::Schema.define(version: 2021_02_09_203957) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "costs", force: :cascade do |t|
+    t.float "unit_cost"
+    t.float "unit_price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "countries", force: :cascade do |t|
     t.string "name"
     t.string "region"
@@ -46,6 +53,30 @@ ActiveRecord::Schema.define(version: 2021_02_09_203957) do
   create_table "microposts", force: :cascade do |t|
     t.text "content"
     t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "model_name"
+    t.string "manufacturer"
+    t.string "platform"
+    t.float "min_price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "promotions", force: :cascade do |t|
+    t.string "promo_name"
+    t.integer "promo_cost"
+    t.date "begin_date"
+    t.date "end_date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "sales", force: :cascade do |t|
+    t.integer "amount_sold"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -15,7 +15,7 @@ User.create!(name:  "Vanja Matovic",
 # Generate a bunch of additional users.
 99.times do |n|
   name  = Faker::Name.name
-  email = "example-#{n+1}@railstutorial.org"
+  email = "example-#{n+1}@gmail.com"
   password = "password"
   User.create!(name:  name,
                email: email,
@@ -108,4 +108,40 @@ descs = ['Direct Sales', 'Tele Sales', 'Catalog', 'Internet', 'Partners']
     Channel.create!(desc: desc,
                     classs: classs,
                     total: 'Channel Total')
+end
+
+100.times do |i|
+    unit_cost = Faker::Number.normal(mean: 250, standard_deviation: 100)
+    unit_price = Faker::Number.normal(mean: 850, standard_deviation: 200)
+    
+    Cost.create!(unit_cost: unit_cost,
+                 unit_price: unit_price)
+end
+
+70.times do |i|
+    model_name = Faker::Device.model_name
+    manufacturer = Faker::Device.manufacturer
+    platform = Faker::Device.platform
+    min_price = Faker::Number.decimal(l_digits: 3, r_digits: 2)
+    
+    Product.create!(model_name: model_name,
+                    manufacturer: manufacturer,
+                    platform: platform,
+                    min_price: min_price)
+end
+
+100.times do |i|
+    promo_name = Faker::Device.model_name + ' promotion'
+    promo_cost = Faker::Number.within(range: 100..1000)
+    begin_date = Time.at(Faker::Base.rand_in_range(Date.parse('01-01-1998').to_time.to_i, Date.parse('31-12-1998').to_time.to_i))
+    end_date = Time.at(Faker::Base.rand_in_range(Date.parse('01-01-1999').to_time.to_i, Date.parse('31-12-2000').to_time.to_i))
+    
+    Promotion.create!(promo_name: promo_name,
+                      promo_cost: promo_cost,
+                      begin_date: begin_date,
+                      end_date: end_date)
+end
+
+200.times do |i|
+    sales = Faker::Number.within(range: 1000..2000)
 end

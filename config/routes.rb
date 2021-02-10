@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :sales
+  resources :promotions
+  resources :products
+  resources :costs
   resources :channels
   resources :cal_times
   resources :countries
