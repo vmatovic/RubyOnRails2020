@@ -2,32 +2,32 @@
 
 <h1>Products</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Device name</th>
-      <th>Manufacturer</th>
-      <th>Device platform</th>
-      <th>Min price</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @products.each do |product| %>
-      <tr>
-        <td><%= product.device_name %></td>
-        <td><%= product.manufacturer %></td>
-        <td><%= product.device_platform %></td>
-        <td><%= product.min_price %></td>
-        <td><%= link_to 'Show', product %></td>
-        <td><%= link_to 'Edit', edit_product_path(product) %></td>
-        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<%= will_paginate %>
+    <% (0..@products.length - 1).step(3).each do |i| %>
+      <div class="container">
+        <div class="row text-center">
+          <div class="col-sm-4 text-center">
+            <% if !@products[i].nil? %>
+              <%= render @products[i] %>
+            <% end %>
+          </div>
+          <div class="col-sm-4 text-center">
+            <% if !@products[i+1].nil? %>
+              <%= render @products[i+1] %>
+            <% end %>
+          </div>
+          <div class="col-sm-4 text-center">
+            <% if !@products[i+2].nil? %>
+              <%= render @products[i+2] %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <br>
+      <br>
     <% end %>
-  </tbody>
-</table>
-
+<%= will_paginate %>
 <br>
-
-<%= link_to 'New Product', new_product_path %>
+<% if !current_user.nil? && current_user.admin? %>
+  <%= link_to 'New Product', new_product_path %>
+<% end %>

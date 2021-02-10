@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_10_130548) do
+ActiveRecord::Schema.define(version: 2021_02_10_222701) do
 
   create_table "cal_month_sales", force: :cascade do |t|
     t.date "calendar_month_desc"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2021_02_10_130548) do
     t.integer "calendar_week_number"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["datefull"], name: "index_cal_times_on_datefull", unique: true
   end
 
   create_table "channels", force: :cascade do |t|
@@ -41,6 +42,12 @@ ActiveRecord::Schema.define(version: 2021_02_10_130548) do
     t.float "unit_price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "product_id"
+    t.integer "cal_time_id"
+    t.integer "channel_id"
+    t.index ["cal_time_id"], name: "index_costs_on_cal_time_id"
+    t.index ["channel_id"], name: "index_costs_on_channel_id"
+    t.index ["product_id"], name: "index_costs_on_product_id"
   end
 
   create_table "countries", force: :cascade do |t|
@@ -55,6 +62,7 @@ ActiveRecord::Schema.define(version: 2021_02_10_130548) do
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "product_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -79,6 +87,16 @@ ActiveRecord::Schema.define(version: 2021_02_10_130548) do
     t.integer "amount_sold"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "product_id"
+    t.integer "user_id"
+    t.integer "cal_time_id"
+    t.integer "channel_id"
+    t.integer "promotion_id"
+    t.index ["cal_time_id"], name: "index_sales_on_cal_time_id"
+    t.index ["channel_id"], name: "index_sales_on_channel_id"
+    t.index ["product_id"], name: "index_sales_on_product_id"
+    t.index ["promotion_id"], name: "index_sales_on_promotion_id"
+    t.index ["user_id"], name: "index_sales_on_user_id"
   end
 
   create_table "supp_demographics", force: :cascade do |t|
@@ -98,7 +116,18 @@ ActiveRecord::Schema.define(version: 2021_02_10_130548) do
     t.string "password_digest"
     t.string "remember_digest"
     t.boolean "admin", default: false
+    t.integer "country_id"
+    t.index ["country_id"], name: "index_users_on_country_id"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "costs", "cal_times"
+  add_foreign_key "costs", "channels"
+  add_foreign_key "costs", "products"
+  add_foreign_key "sales", "cal_times"
+  add_foreign_key "sales", "channels"
+  add_foreign_key "sales", "products"
+  add_foreign_key "sales", "promotions"
+  add_foreign_key "sales", "users"
+  add_foreign_key "users", "countries"
 end

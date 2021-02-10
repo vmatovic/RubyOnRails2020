@@ -1,0 +1,10 @@
+<div class="row">
+    <div class="col"><b><%= link_to product.device_name, product %></b></div>
+    <div class="col">Manufacturer: <%= product.manufacturer %></div>
+    <div class="col">Platform: <%= product.device_platform %></div>
+    <div class="col">Min price: <%= product.min_price %>$</div>
+    <% if !current_user.nil? && current_user.admin? %>
+      <div class="col"><%= link_to 'Edit', edit_product_path(product) %></div>
+      <div class="col"><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+    <% end %>
+</div>

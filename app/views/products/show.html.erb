@@ -19,6 +19,7 @@
   <strong>Min price:</strong>
   <%= @product.min_price %>
 </p>
-
-<%= link_to 'Edit', edit_product_path(@product) %> |
+<% if !current_user.nil? && current_user.admin? %>
+  <%= link_to 'Edit', edit_product_path(@product) %>
+<% end %>
 <%= link_to 'Back', products_path %>

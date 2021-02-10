@@ -6,6 +6,9 @@
         <%= gravatar_for @user %>
         <%= @user.name %>
       </h1>
+      <% if !@user.country.nil? %>
+        <%= render @user.country %>
+      <% end %>
     </section>
   </aside>
 </div>
