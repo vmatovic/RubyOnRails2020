@@ -19,6 +19,10 @@ module SessionsHelper
         !current_user.nil?
     end
     
+    def is_user_admin?
+        !current_user.nil? && current_user.admin?
+    end
+    
     def forget(user)
         user.forget
         cookies.delete(:user_id)

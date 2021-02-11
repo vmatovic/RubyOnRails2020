@@ -1,5 +1,6 @@
 class CountriesController < ApplicationController
   before_action :set_country, only: [:show, :edit, :update, :destroy]
+  before_action :is_it_admin
 
   # GET /countries
   # GET /countries.json
@@ -70,5 +71,12 @@ class CountriesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def country_params
       params.require(:country).permit(:name, :region)
+    end
+    
+    def is_it_admin
+      unless is_user_admin?
+        flash[:danger] = "Sorry, but you're not authorized to view that page. Please log in."
+        redirect_to login_url
+      end
     end
 end

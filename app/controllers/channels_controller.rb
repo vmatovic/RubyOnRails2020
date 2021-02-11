@@ -1,6 +1,7 @@
 class ChannelsController < ApplicationController
   before_action :set_channel, only: [:show, :edit, :update, :destroy]
-
+  before_action :is_it_admin
+  
   # GET /channels
   # GET /channels.json
   def index
@@ -62,6 +63,14 @@ class ChannelsController < ApplicationController
   end
 
   private
+  
+    def is_it_admin
+      unless is_user_admin?
+        flash[:danger] = "Sorry, but you're not authorized to view that page. Please log in."
+        redirect_to login_url
+      end
+    end
+    
     # Use callbacks to share common setup or constraints between actions.
     def set_channel
       @channel = Channel.find(params[:id])
