@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_10_222701) do
+ActiveRecord::Schema.define(version: 2021_02_11_120320) do
 
   create_table "cal_month_sales", force: :cascade do |t|
     t.date "calendar_month_desc"
@@ -59,10 +59,12 @@ ActiveRecord::Schema.define(version: 2021_02_10_222701) do
 
   create_table "microposts", force: :cascade do |t|
     t.text "content"
-    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
     t.integer "product_id"
+    t.index ["product_id"], name: "index_microposts_on_product_id"
+    t.index ["user_id"], name: "index_microposts_on_user_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -124,6 +126,8 @@ ActiveRecord::Schema.define(version: 2021_02_10_222701) do
   add_foreign_key "costs", "cal_times"
   add_foreign_key "costs", "channels"
   add_foreign_key "costs", "products"
+  add_foreign_key "microposts", "products"
+  add_foreign_key "microposts", "users"
   add_foreign_key "sales", "cal_times"
   add_foreign_key "sales", "channels"
   add_foreign_key "sales", "products"
