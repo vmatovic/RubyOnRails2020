@@ -5,24 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-=begin
-User.create!(name:  "Vanja Matovic",
-             email: "vmatovic3818rn@raf.rs",
-             password:              "123456",
-             password_confirmation: "123456",
-             admin: true)
-=begin
-# Generate a bunch of additional users.
-99.times do |n|
-  name  = Faker::Name.name
-  email = "example-#{n+1}@gmail.com"
-  password = "password"
-  User.create!(name:  name,
-               email: email,
-               password:              password,
-               password_confirmation: password,
-               admin: false)
-end
 
 50.times do |n|
     calendar_month_desc = Time.at(Faker::Base.rand_in_range(Date.parse('01-01-1998').to_time.to_i, Date.parse('31-12-2001').to_time.to_i))
@@ -30,11 +12,11 @@ end
     CalMonthSale.create!(calendar_month_desc: calendar_month_desc,
                          dollars: dollars)
 end
-=end
+
 countries = ['South Africa', 'United States of America', 'Brazil', 'Argentina', 'Canada', 'Malaysia', 'Japan',
             'India', 'China', 'Singapore', 'Germany', 'United Kingdom', 'The Netherlands', 'Ireland', 'Denmark',
             'France', 'Spain', 'Turkey', 'Poland', 'Italy', 'Serbia', 'Saudi Arabia', 'Australia', 'New Zealand']
-last_one = nil
+
 23.times do |i|
     name = countries[i]
     if i == 0
@@ -51,7 +33,7 @@ last_one = nil
         region = 'Oceania'
     end
     
-    last_one = Country.create(name: name,
+    Country.create!(name: name,
                     region: region)
 end
 
@@ -75,7 +57,7 @@ User.create!(name:  "Vanja Matovic",
                country_id: country)
 end
 
-=begin
+
 start_date = Date.parse('01-01-1998')
 num_in_week = 3
 num_in_month = 0
@@ -138,7 +120,7 @@ end
     Cost.create!(unit_cost: unit_cost,
                  unit_price: unit_price)
 end
-=end
+
 70.times do |i|
     device_name = Faker::Device.model_name
     mmanufacturer = Faker::Device.manufacturer
@@ -150,7 +132,7 @@ end
                     device_platform: device_platform,
                     min_price: mmin_price)
 end
-=begin
+
 100.times do |i|
     promo_name = Faker::Device.model_name + ' promotion'
     promo_cost = Faker::Number.within(range: 100..1000)
@@ -180,5 +162,3 @@ end
                             years_residence: years_residence,
                             comment: comment)
 end
-
-=end

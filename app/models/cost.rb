@@ -1,5 +1,5 @@
 class Cost < ApplicationRecord
-    belongs_to :cal_time
-    belongs_to :channel
-    belongs_to :product
+    belongs_to :cal_time, optional: true
+    belongs_to :channel, optional: true
+    belongs_to :product, optional: true
 end
