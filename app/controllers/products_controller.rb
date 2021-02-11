@@ -10,6 +10,7 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+    @micropost = Micropost.new
   end
 
   # GET /products/new
@@ -65,6 +66,7 @@ class ProductsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_product
       @product = Product.find(params[:id])
+      set_current_product(@product)
     end
 
     # Only allow a list of trusted parameters through.

@@ -23,3 +23,23 @@
   <%= link_to 'Edit', edit_product_path(@product) %>
 <% end %>
 <%= link_to 'Back', products_path %>
+<br>
+<br>
+<br>
+<% if logged_in? %>
+  <div class="row">
+    <aside class="col-md-4">
+      <section class="micropost_form">
+        <%= render 'layouts/micropost_form' %>
+      </section>
+    </aside>
+  </div>
+  <br>
+  <br>
+  <br>
+<% end %>
+<ol>
+  <% @product.microposts.each do |mpost| %>
+    <%= render partial: mpost, :locals => { :some_index => 1 } %>
+  <% end %>
+</ol>

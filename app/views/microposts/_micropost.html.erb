@@ -1,0 +1,11 @@
+<li id="micropost-<%= micropost.id %>">
+    <% if some_index == 1 %>
+        <p><%= link_to gravatar_for(micropost.user), micropost.user %></p>
+        <strong><%= link_to micropost.user.name, micropost.user %></strong>
+    <% elsif some_index == 2 %>
+        <strong><%= link_to micropost.product.device_name, micropost.product %></strong>
+    <% end %>
+    <p><%= micropost.content %></p>
+    <br>
+    <small>Posted <%= time_ago_in_words(micropost.created_at) %> ago.</small>
+</li>
