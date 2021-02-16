@@ -1,6 +1,6 @@
 class ManufacturersController < ApplicationController
   before_action :set_manufacturer, only: [:show, :edit, :update, :destroy]
-
+  before_action :is_it_admin
   # GET /manufacturers
   # GET /manufacturers.json
   def index
@@ -54,6 +54,7 @@ class ManufacturersController < ApplicationController
   # DELETE /manufacturers/1
   # DELETE /manufacturers/1.json
   def destroy
+    @manufacturer.products.clear
     @manufacturer.destroy
     respond_to do |format|
       format.html { redirect_to manufacturers_url, notice: 'Manufacturer was successfully destroyed.' }

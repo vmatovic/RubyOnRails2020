@@ -1,6 +1,6 @@
 class ManProdsController < ApplicationController
   before_action :set_man_prod, only: [:show, :edit, :update, :destroy]
-
+  before_action :is_it_admin
   # GET /man_prods
   # GET /man_prods.json
   def index

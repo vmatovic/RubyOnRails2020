@@ -1,6 +1,6 @@
 class MicropostsController < ApplicationController
   before_action :set_micropost, only: [:show, :edit, :update, :destroy]
-
+  before_action :is_it_admin, except: [:new, :create, :destroy]
   # GET /microposts
   # GET /microposts.json
   def index
@@ -30,7 +30,7 @@ class MicropostsController < ApplicationController
     
     respond_to do |format|
       if @micropost.save
-        format.html { redirect_to current_product, notice: 'Micropost was successfully created.' }
+        format.html { redirect_to current_product, notice: 'New comment was successfully created.' }
         format.json { render :show, status: :created, location: @micropost }
       else
         format.html { render :new }
@@ -44,7 +44,7 @@ class MicropostsController < ApplicationController
   def update
     respond_to do |format|
       if @micropost.update(micropost_params)
-        format.html { redirect_to @micropost, notice: 'Micropost was successfully updated.' }
+        format.html { redirect_to @micropost, notice: 'New comment was successfully updated.' }
         format.json { render :show, status: :ok, location: @micropost }
       else
         format.html { render :edit }
@@ -56,9 +56,11 @@ class MicropostsController < ApplicationController
   # DELETE /microposts/1
   # DELETE /microposts/1.json
   def destroy
+    @micropost.user = nil
+    @micropost.product = nil
     @micropost.destroy
     respond_to do |format|
-      format.html { redirect_to microposts_url, notice: 'Micropost was successfully destroyed.' }
+      format.html { redirect_to products_url, notice: 'New comment was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

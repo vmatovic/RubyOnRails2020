@@ -1,5 +1,6 @@
 class CalTimesController < ApplicationController
   before_action :set_cal_time, only: [:show, :edit, :update, :destroy]
+  before_action :is_it_admin
 
   # GET /cal_times
   # GET /cal_times.json

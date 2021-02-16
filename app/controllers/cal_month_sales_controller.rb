@@ -1,6 +1,6 @@
 class CalMonthSalesController < ApplicationController
   before_action :set_cal_month_sale, only: [:show, :edit, :update, :destroy]
-
+  before_action :is_it_admin
   # GET /cal_month_sales
   # GET /cal_month_sales.json
   def index

@@ -167,15 +167,3 @@ end
     
     Sale.create!(amount_sold: sales)
 end
-
-110.times do |i|
-    education = Faker::University.name
-    household_size = Faker::Number.within(range: 1..4)
-    years_residence = Faker::Number.within(range: 1..6)
-    comment = Faker::Movie.quote
-    
-    SuppDemographic.create!(education: education,
-                            household_size: household_size,
-                            years_residence: years_residence,
-                            comment: comment)
-end

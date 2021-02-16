@@ -45,4 +45,11 @@ module SessionsHelper
         cookies.permanent.signed[:user_id] = user.id
         cookies.permanent[:remember_token] = user.remember_token
     end
+    
+    def is_it_admin
+      unless is_user_admin?
+        flash[:danger] = "Sorry, but you're not authorized to view the page. Please log in."
+        redirect_to login_url
+      end
+    end
 end

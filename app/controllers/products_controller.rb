@@ -5,6 +5,7 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = Product.paginate(page: params[:page])
+    check_products
   end
 
   # GET /products/1
@@ -55,6 +56,7 @@ class ProductsController < ApplicationController
   # DELETE /products/1
   # DELETE /products/1.json
   def destroy
+    @product.manufacturers.clear
     @product.destroy
     respond_to do |format|
       format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
@@ -67,6 +69,14 @@ class ProductsController < ApplicationController
     def set_product
       @product = Product.find(params[:id])
       set_current_product(@product)
+    end
+    
+    def check_products
+      @products.each do |pr|
+        if pr.manufacturers.empty?
+          pr.destroy
+        end
+      end
     end
 
     # Only allow a list of trusted parameters through.

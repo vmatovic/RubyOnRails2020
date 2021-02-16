@@ -116,15 +116,6 @@ ActiveRecord::Schema.define(version: 2021_02_16_123615) do
     t.index ["user_id"], name: "index_sales_on_user_id"
   end
 
-  create_table "supp_demographics", force: :cascade do |t|
-    t.string "education"
-    t.integer "household_size"
-    t.integer "years_residence"
-    t.string "comment"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"

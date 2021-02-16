@@ -3,7 +3,8 @@
         <p><%= link_to gravatar_for(micropost.user), micropost.user %></p>
         <strong><%= link_to micropost.user.name, micropost.user %></strong>
     <% elsif some_index == 2 %>
-        <strong><%= link_to micropost.product.device_name, micropost.product %></strong>
+        <strong><%= link_to micropost.product.device_name, micropost.product %></strong> |
+        <%= link_to 'Delete', micropost, method: :delete, data: { confirm: 'Are you sure?' } %>
     <% end %>
     <p><%= micropost.content %></p>
     <br>

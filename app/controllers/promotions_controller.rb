@@ -1,6 +1,6 @@
 class PromotionsController < ApplicationController
   before_action :set_promotion, only: [:show, :edit, :update, :destroy]
-
+  before_action :is_it_admin
   # GET /promotions
   # GET /promotions.json
   def index
