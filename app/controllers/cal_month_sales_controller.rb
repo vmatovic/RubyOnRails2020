@@ -4,7 +4,7 @@ class CalMonthSalesController < ApplicationController
   # GET /cal_month_sales
   # GET /cal_month_sales.json
   def index
-    @cal_month_sales = CalMonthSale.all
+    @cal_month_sales = CalMonthSale.paginate(page: params[:page])
   end
 
   # GET /cal_month_sales/1

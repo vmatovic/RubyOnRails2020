@@ -1,8 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Manufacturers</h1>
+<br>
+<%= link_to 'New Manufacturer', new_manufacturer_path %>
+<br>
+<br>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Name</th>
@@ -10,7 +14,7 @@
       <th colspan="3"></th>
     </tr>
   </thead>
-
+<%= will_paginate %>
   <tbody>
     <% @manufacturers.each do |manufacturer| %>
       <tr>
@@ -22,8 +26,7 @@
       </tr>
     <% end %>
   </tbody>
+  <%= will_paginate %>
 </table>
 
 <br>
-
-<%= link_to 'New Manufacturer', new_manufacturer_path %>

@@ -14,8 +14,12 @@
 </div>
 
 <h2><strong>Recenzije</strong></h2>
+<% if @user.microposts.empty? %>
+<p>Jos nema recenzija!</p>
+<% else %>
 <ol>
   <% @user.microposts.each do |mpost| %>
     <%= render partial: mpost, :locals => { :some_index => 2 } %>
   <% end %>
 </ol>
+<% end %>

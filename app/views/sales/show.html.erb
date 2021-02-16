@@ -1,9 +1,30 @@
 <p id="notice"><%= notice %></p>
 
+<h5>Name: <%= @sale.user.name %> </h5>
+<h5>Product: <%= @sale.product.device_name %> </h5>
+<div>
+  <h5>Manufacturers:</h5>
+  <p>
+    <% @sale.product.manufacturers.each do |man| %>
+      <%= man.name %>
+    <% end %>
+  </p>
+</div>
+
 <p>
   <strong>Amount sold:</strong>
   <%= @sale.amount_sold %>
 </p>
-
+<br>
+<div>
+  <h5>Cal time info</h5>
+  <%= render @sale.cal_time %>
+  <br>
+  <h5>Channel: <%= @sale.channel.desc %></h5>
+  <br>
+  <h5>Promotion info</h5>
+  <%= render @sale.promotion %>
+</div>
+<br>
 <%= link_to 'Edit', edit_sale_path(@sale) %> |
 <%= link_to 'Back', sales_path %>

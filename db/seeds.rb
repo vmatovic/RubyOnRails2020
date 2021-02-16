@@ -113,14 +113,6 @@ descs = ['Direct Sales', 'Tele Sales', 'Catalog', 'Internet', 'Partners']
                     total: 'Channel Total')
 end
 
-100.times do |i|
-    unit_cost = Faker::Number.normal(mean: 250, standard_deviation: 100)
-    unit_price = Faker::Number.normal(mean: 850, standard_deviation: 200)
-    
-    Cost.create!(unit_cost: unit_cost,
-                 unit_price: unit_price)
-end
-
 manufacturers = []
 
 10.times do |i|
@@ -163,7 +155,31 @@ end
 end
 
 200.times do |i|
-    sales = Faker::Number.within(range: 1000..2000)
+    sales = Faker::Number.within(range: 1..4)
+    i_ct = Faker::Number.within(range: 1..1400)
+    i_c = Faker::Number.within(range: 1..4)
+    i_p = Faker::Number.within(range: 1..65)
+    i_prom = Faker::Number.within(range: 1..95)
+    i_u = Faker::Number.within(range: 1..98)
     
-    Sale.create!(amount_sold: sales)
+    Sale.create!(amount_sold: sales,
+                 cal_time_id: i_ct,
+                 channel_id: i_c,
+                 product_id: i_p,
+                 promotion_id: i_prom,
+                 user_id: i_u)
+end
+
+100.times do |i|
+    unit_cost = Faker::Number.normal(mean: 250, standard_deviation: 100)
+    unit_price = Faker::Number.normal(mean: 850, standard_deviation: 200)
+    i_ct = Faker::Number.within(range: 1..1400)
+    i_c = Faker::Number.within(range: 1..3)
+    i_p = Faker::Number.within(range: 1..65)
+    
+    Cost.create!(unit_cost: unit_cost,
+                 unit_price: unit_price,
+                 cal_time_id: i_ct,
+                 channel_id: i_c,
+                 product_id: i_p)
 end

@@ -1,8 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Cal Month Sales</h1>
+<br>
+<%= link_to 'New Cal Month Sale', new_cal_month_sale_path %>
+<br>
+<br>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Calendar month desc</th>
@@ -10,7 +14,7 @@
       <th colspan="3"></th>
     </tr>
   </thead>
-
+<%= will_paginate %>
   <tbody>
     <% @cal_month_sales.each do |cal_month_sale| %>
       <tr>
@@ -23,7 +27,7 @@
     <% end %>
   </tbody>
 </table>
-
+<%= will_paginate %>
 <br>
 
-<%= link_to 'New Cal Month Sale', new_cal_month_sale_path %>
+

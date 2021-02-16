@@ -1,5 +1,18 @@
 <p id="notice"><%= notice %></p>
 
+<h5>Channel: <%= @cost.channel.desc %></h5>
+<br>
+
+<h5>Product: <%= @cost.product.device_name %> </h5>
+<div>
+  <h5>Manufacturers:</h5>
+  <p>
+    <% @cost.product.manufacturers.each do |man| %>
+      <%= man.name %>
+    <% end %>
+  </p>
+</div>
+<br>
 <p>
   <strong>Unit cost:</strong>
   <%= @cost.unit_cost %>
@@ -9,6 +22,10 @@
   <strong>Unit price:</strong>
   <%= @cost.unit_price %>
 </p>
+<br>
+<h5>Cal time info</h5>
+<%= render @cost.cal_time %>
+<br>
 
 <%= link_to 'Edit', edit_cost_path(@cost) %> |
 <%= link_to 'Back', costs_path %>

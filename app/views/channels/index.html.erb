@@ -1,17 +1,21 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Channels</h1>
+<br>
+<%= link_to 'New Channel', new_channel_path %>
+<br>
+<br>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Desc</th>
-      <th>Classs</th>
+      <th>Class</th>
       <th>Total</th>
       <th colspan="3"></th>
     </tr>
   </thead>
-
+<%= will_paginate %>
   <tbody>
     <% @channels.each do |channel| %>
       <tr>
@@ -25,7 +29,5 @@
     <% end %>
   </tbody>
 </table>
-
+<%= will_paginate %>
 <br>
-
-<%= link_to 'New Channel', new_channel_path %>

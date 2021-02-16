@@ -1,8 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Cal Times</h1>
+<br>
+<%= link_to 'New Cal Time', new_cal_time_path %>
+<br>
+<br>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Datefull</th>
@@ -12,7 +16,7 @@
       <th colspan="3"></th>
     </tr>
   </thead>
-
+<%= will_paginate %>
   <tbody>
     <% @cal_times.each do |cal_time| %>
       <tr>
@@ -27,7 +31,6 @@
     <% end %>
   </tbody>
 </table>
-
+<%= will_paginate %>
 <br>
 
-<%= link_to 'New Cal Time', new_cal_time_path %>

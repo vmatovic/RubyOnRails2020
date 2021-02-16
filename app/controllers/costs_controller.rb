@@ -5,7 +5,7 @@ class CostsController < ApplicationController
   # GET /costs
   # GET /costs.json
   def index
-    @costs = Cost.all
+    @costs = Cost.paginate(page: params[:page])
   end
 
   # GET /costs/1
@@ -55,6 +55,9 @@ class CostsController < ApplicationController
   # DELETE /costs/1
   # DELETE /costs/1.json
   def destroy
+    @cost.cal_time = nil
+    @cost.channel = nil
+    @cost.product = nil
     @cost.destroy
     respond_to do |format|
       format.html { redirect_to costs_url, notice: 'Cost was successfully destroyed.' }

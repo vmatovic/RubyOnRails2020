@@ -5,7 +5,7 @@ class CalTimesController < ApplicationController
   # GET /cal_times
   # GET /cal_times.json
   def index
-    @cal_times = CalTime.all
+    @cal_times = CalTime.paginate(page: params[:page])
   end
 
   # GET /cal_times/1

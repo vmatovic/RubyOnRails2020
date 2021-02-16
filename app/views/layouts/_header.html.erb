@@ -7,6 +7,12 @@
         <li><%= link_to "Products", products_path  %></li>
         <% if logged_in? %>
           <% if current_user.admin? %>
+            <li><%= link_to "Month sales", cal_month_sales_path  %></li>
+            <li><%= link_to "Times", cal_times_path  %></li>
+            <li><%= link_to "Channels", channels_path  %></li>
+            <li><%= link_to "Costs", costs_path  %></li>
+            <li><%= link_to "Promotions", promotions_path  %></li>
+            <li><%= link_to "Sales", sales_path  %></li>
             <li><%= link_to "Manufacturers", manufacturers_path  %></li>
             <li><%= link_to "Users", users_path  %></li>
           <% end %>

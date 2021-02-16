@@ -4,7 +4,7 @@ class PromotionsController < ApplicationController
   # GET /promotions
   # GET /promotions.json
   def index
-    @promotions = Promotion.all
+    @promotions = Promotion.paginate(page: params[:page])
   end
 
   # GET /promotions/1
