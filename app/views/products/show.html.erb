@@ -6,8 +6,10 @@
 </p>
 
 <p>
-  <strong>Manufacturer:</strong>
-  <%= @product.manufacturer %>
+  <strong>Manufacturers:</strong>
+  <% @product.manufacturers.each do |man| %>
+    <%= man.name %>
+  <% end %>
 </p>
 
 <p>

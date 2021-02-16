@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Manufacturer:</strong>
+  <%= @man_prod.manufacturer_id %>
+</p>
+
+<p>
+  <strong>Product:</strong>
+  <%= @man_prod.product_id %>
+</p>
+
+<%= link_to 'Edit', edit_man_prod_path(@man_prod) %> |
+<%= link_to 'Back', man_prods_path %>

@@ -1,0 +1,2 @@
+module ManProdsHelper
+end

@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @manufacturer.name %>
+</p>
+
+<p>
+  <strong>Num employees:</strong>
+  <%= @manufacturer.num_employees %>
+</p>
+
+<div>
+  <p><strong>Products:</strong></p>
+  <% @manufacturer.products.each do |pr| %>
+    <p>
+      <%= prod_display pr %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to 'Edit', edit_manufacturer_path(@manufacturer) %> |
+<%= link_to 'Back', manufacturers_path %>

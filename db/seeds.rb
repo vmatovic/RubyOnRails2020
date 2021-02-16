@@ -121,16 +121,33 @@ end
                  unit_price: unit_price)
 end
 
+manufacturers = []
+
+10.times do |i|
+    name = Faker::Device.manufacturer
+    num_employees = Faker::Number.within(range: 10..250)
+    
+    man = Manufacturer.create!(name: name,
+                               num_employees: num_employees)
+    
+    manufacturers << man
+end
+
 70.times do |i|
     device_name = Faker::Device.model_name
-    mmanufacturer = Faker::Device.manufacturer
     device_platform = Faker::Device.platform
     mmin_price = Faker::Number.decimal(l_digits: 3, r_digits: 2)
     
-    Product.create!(device_name: device_name,
-                    manufacturer: mmanufacturer,
-                    device_platform: device_platform,
-                    min_price: mmin_price)
+    pr = Product.create!(device_name: device_name,
+                        device_platform: device_platform,
+                        min_price: mmin_price)
+    
+    3.times do |j|
+        ind = Faker::Number.within(range: 0..9)
+        man = manufacturers[ind]
+        man.products << pr
+    end
+
 end
 
 100.times do |i|

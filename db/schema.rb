@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_11_120320) do
+ActiveRecord::Schema.define(version: 2021_02_16_123615) do
 
   create_table "cal_month_sales", force: :cascade do |t|
     t.date "calendar_month_desc"
@@ -57,6 +57,22 @@ ActiveRecord::Schema.define(version: 2021_02_11_120320) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "man_prods", force: :cascade do |t|
+    t.integer "manufacturer_id"
+    t.integer "product_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["manufacturer_id"], name: "index_man_prods_on_manufacturer_id"
+    t.index ["product_id"], name: "index_man_prods_on_product_id"
+  end
+
+  create_table "manufacturers", force: :cascade do |t|
+    t.string "name"
+    t.integer "num_employees"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "microposts", force: :cascade do |t|
     t.text "content"
     t.datetime "created_at", precision: 6, null: false
@@ -69,7 +85,6 @@ ActiveRecord::Schema.define(version: 2021_02_11_120320) do
 
   create_table "products", force: :cascade do |t|
     t.string "device_name"
-    t.string "manufacturer"
     t.string "device_platform"
     t.integer "min_price"
     t.datetime "created_at", precision: 6, null: false
@@ -126,6 +141,8 @@ ActiveRecord::Schema.define(version: 2021_02_11_120320) do
   add_foreign_key "costs", "cal_times"
   add_foreign_key "costs", "channels"
   add_foreign_key "costs", "products"
+  add_foreign_key "man_prods", "manufacturers"
+  add_foreign_key "man_prods", "products"
   add_foreign_key "microposts", "products"
   add_foreign_key "microposts", "users"
   add_foreign_key "sales", "cal_times"

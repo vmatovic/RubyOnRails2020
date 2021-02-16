@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :man_prods
+  resources :manufacturers
   resources :supp_demographics
   resources :products
   resources :sales
